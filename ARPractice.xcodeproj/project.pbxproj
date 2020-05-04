@@ -10,9 +10,9 @@
 		25175C48245F204C00845932 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C47245F204C00845932 /* AppDelegate.swift */; };
 		25175C4A245F204C00845932 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C49245F204C00845932 /* ViewController.swift */; };
 		25175C4C245F204D00845932 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 25175C4B245F204D00845932 /* Experience.rcproject */; };
-		25175C4F245F204D00845932 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25175C4D245F204D00845932 /* Main.storyboard */; };
 		25175C51245F204E00845932 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25175C50245F204E00845932 /* Assets.xcassets */; };
 		25175C54245F204E00845932 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25175C52245F204E00845932 /* LaunchScreen.storyboard */; };
+		25BD62AA245F2345003DFB13 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BD62A9245F2345003DFB13 /* ViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,10 +20,10 @@
 		25175C47245F204C00845932 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25175C49245F204C00845932 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		25175C4B245F204D00845932 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
-		25175C4E245F204D00845932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25175C50245F204E00845932 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25175C53245F204E00845932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25175C55245F204E00845932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25BD62A9245F2345003DFB13 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +58,8 @@
 			children = (
 				25175C47245F204C00845932 /* AppDelegate.swift */,
 				25175C49245F204C00845932 /* ViewController.swift */,
+				25BD62A9245F2345003DFB13 /* ViewController.xib */,
 				25175C4B245F204D00845932 /* Experience.rcproject */,
-				25175C4D245F204D00845932 /* Main.storyboard */,
 				25175C50245F204E00845932 /* Assets.xcassets */,
 				25175C52245F204E00845932 /* LaunchScreen.storyboard */,
 				25175C55245F204E00845932 /* Info.plist */,
@@ -127,7 +127,7 @@
 			files = (
 				25175C54245F204E00845932 /* LaunchScreen.storyboard in Resources */,
 				25175C51245F204E00845932 /* Assets.xcassets in Resources */,
-				25175C4F245F204D00845932 /* Main.storyboard in Resources */,
+				25BD62AA245F2345003DFB13 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +147,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		25175C4D245F204D00845932 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25175C4E245F204D00845932 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		25175C52245F204E00845932 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -285,6 +277,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = ARPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +295,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
 				INFOPLIST_FILE = ARPractice/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

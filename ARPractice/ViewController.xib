@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="ARPractice" customModuleProvider="target">
+            <connections>
+                <outlet property="arView" destination="7Ga-b7-A9Z" id="ewv-zZ-vnU"/>
+                <outlet property="measureButton" destination="OtU-Po-cVw" id="H72-8G-4P8"/>
+                <outlet property="resultLabel" destination="n9v-pn-AVd" id="Rgk-b3-Xd7"/>
+                <outlet property="view" destination="iN0-l3-epB" id="t7i-R2-Tgw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ga-b7-A9Z">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </arView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OtU-Po-cVw">
+                    <rect key="frame" x="32" y="786" width="350" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="C6v-dq-pEy"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                    <state key="normal" title="Measure"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="・" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hy1-hQ-81H">
+                    <rect key="frame" x="157" y="388.5" width="100.5" height="119.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                    <color key="textColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9v-pn-AVd">
+                    <rect key="frame" x="16" y="60" width="382" height="27.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="n9v-pn-AVd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="20d-Ac-D3T"/>
+                <constraint firstItem="7Ga-b7-A9Z" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="46i-0F-REb"/>
+                <constraint firstItem="OtU-Po-cVw" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="ChJ-a9-FBy"/>
+                <constraint firstAttribute="bottom" secondItem="7Ga-b7-A9Z" secondAttribute="bottom" id="TX2-5T-d0H"/>
+                <constraint firstItem="Hy1-hQ-81H" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TqY-BJ-DkD"/>
+                <constraint firstItem="7Ga-b7-A9Z" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Xhh-ZA-W1A"/>
+                <constraint firstItem="n9v-pn-AVd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="eUB-ch-Xdc"/>
+                <constraint firstItem="7Ga-b7-A9Z" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="gIA-3D-wze"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OtU-Po-cVw" secondAttribute="trailing" constant="32" id="i5N-H6-NZY"/>
+                <constraint firstItem="Hy1-hQ-81H" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kP8-Tu-sDD"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n9v-pn-AVd" secondAttribute="trailing" constant="16" id="lY3-xf-KNK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OtU-Po-cVw" secondAttribute="bottom" constant="32" id="pp7-os-Krn"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="137.68115942028987" y="141.96428571428569"/>
+        </view>
+    </objects>
+</document>
