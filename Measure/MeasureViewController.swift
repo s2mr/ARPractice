@@ -2,7 +2,7 @@ import UIKit
 import ARKit
 import RealityKit
 
-final class ViewController: UIViewController {
+final class MeasureViewController: UIViewController {
     @IBOutlet private weak var resultLabel: UILabel!
     @IBOutlet private weak var measureButton: UIButton! {
         didSet {
@@ -58,7 +58,7 @@ final class ViewController: UIViewController {
     }
 }
 
-extension ViewController: ARSessionDelegate {
+extension MeasureViewController: ARSessionDelegate {
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
         guard let startEntity = startEntity, endEntity == nil else { return }
         guard let column = arView.hitTest(arView.center, types: .featurePoint).first?.worldTransform.columns.3 else { return }
@@ -77,7 +77,7 @@ extension ViewController: ARSessionDelegate {
     }
 }
 
-private extension ViewController {
+private extension MeasureViewController {
     @objc private func measureButtonTapped() {
         guard let column = arView.hitTest(arView.center, types: .featurePoint).first?.worldTransform.columns.3 else { return }
 

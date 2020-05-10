@@ -8,26 +8,47 @@
 
 /* Begin PBXBuildFile section */
 		25175C48245F204C00845932 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C47245F204C00845932 /* AppDelegate.swift */; };
-		25175C4A245F204C00845932 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C49245F204C00845932 /* ViewController.swift */; };
+		25175C4A245F204C00845932 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C49245F204C00845932 /* MeasureViewController.swift */; };
 		25175C4C245F204D00845932 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 25175C4B245F204D00845932 /* Experience.rcproject */; };
 		25175C51245F204E00845932 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25175C50245F204E00845932 /* Assets.xcassets */; };
 		25175C54245F204E00845932 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25175C52245F204E00845932 /* LaunchScreen.storyboard */; };
 		25BD62AA245F2345003DFB13 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BD62A9245F2345003DFB13 /* ViewController.xib */; };
+		6E06D7EF2468524500048D71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7EE2468524500048D71 /* AppDelegate.swift */; };
+		6E06D7F12468524500048D71 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7F02468524500048D71 /* ContentView.swift */; };
+		6E06D7F32468524500048D71 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7F22468524500048D71 /* Experience.rcproject */; };
+		6E06D7F52468524700048D71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F42468524700048D71 /* Assets.xcassets */; };
+		6E06D7F82468524700048D71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F72468524700048D71 /* Preview Assets.xcassets */; };
+		6E06D7FB2468524700048D71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F92468524700048D71 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		25175C44245F204C00845932 /* ARPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		25175C44245F204C00845932 /* Measure.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Measure.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25175C47245F204C00845932 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		25175C49245F204C00845932 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		25175C49245F204C00845932 /* MeasureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureViewController.swift; sourceTree = "<group>"; };
 		25175C4B245F204D00845932 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		25175C50245F204E00845932 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25175C53245F204E00845932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25175C55245F204E00845932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25BD62A9245F2345003DFB13 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		6E06D7EC2468524500048D71 /* ARPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E06D7EE2468524500048D71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6E06D7F02468524500048D71 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6E06D7F22468524500048D71 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
+		6E06D7F42468524700048D71 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6E06D7F72468524700048D71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6E06D7FA2468524700048D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6E06D7FC2468524700048D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		25175C41245F204C00845932 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E06D7E92468524500048D71 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -40,7 +61,8 @@
 		25175C3B245F204C00845932 = {
 			isa = PBXGroup;
 			children = (
-				25175C46245F204C00845932 /* ARPractice */,
+				25175C46245F204C00845932 /* Measure */,
+				6E06D7ED2468524500048D71 /* ARPractice */,
 				25175C45245F204C00845932 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +70,54 @@
 		25175C45245F204C00845932 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25175C44245F204C00845932 /* ARPractice.app */,
+				25175C44245F204C00845932 /* Measure.app */,
+				6E06D7EC2468524500048D71 /* ARPractice.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		25175C46245F204C00845932 /* ARPractice */ = {
+		25175C46245F204C00845932 /* Measure */ = {
 			isa = PBXGroup;
 			children = (
 				25175C47245F204C00845932 /* AppDelegate.swift */,
-				25175C49245F204C00845932 /* ViewController.swift */,
+				25175C49245F204C00845932 /* MeasureViewController.swift */,
 				25BD62A9245F2345003DFB13 /* ViewController.xib */,
 				25175C4B245F204D00845932 /* Experience.rcproject */,
 				25175C50245F204E00845932 /* Assets.xcassets */,
 				25175C52245F204E00845932 /* LaunchScreen.storyboard */,
 				25175C55245F204E00845932 /* Info.plist */,
 			);
+			path = Measure;
+			sourceTree = "<group>";
+		};
+		6E06D7ED2468524500048D71 /* ARPractice */ = {
+			isa = PBXGroup;
+			children = (
+				6E06D7EE2468524500048D71 /* AppDelegate.swift */,
+				6E06D7F02468524500048D71 /* ContentView.swift */,
+				6E06D7F22468524500048D71 /* Experience.rcproject */,
+				6E06D7F42468524700048D71 /* Assets.xcassets */,
+				6E06D7F92468524700048D71 /* LaunchScreen.storyboard */,
+				6E06D7FC2468524700048D71 /* Info.plist */,
+				6E06D7F62468524700048D71 /* Preview Content */,
+			);
 			path = ARPractice;
+			sourceTree = "<group>";
+		};
+		6E06D7F62468524700048D71 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6E06D7F72468524700048D71 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		25175C43245F204C00845932 /* ARPractice */ = {
+		25175C43245F204C00845932 /* Measure */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25175C58245F204E00845932 /* Build configuration list for PBXNativeTarget "ARPractice" */;
+			buildConfigurationList = 25175C58245F204E00845932 /* Build configuration list for PBXNativeTarget "Measure" */;
 			buildPhases = (
 				25175C40245F204C00845932 /* Sources */,
 				25175C41245F204C00845932 /* Frameworks */,
@@ -82,9 +127,26 @@
 			);
 			dependencies = (
 			);
+			name = Measure;
+			productName = ARPractice;
+			productReference = 25175C44245F204C00845932 /* Measure.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6E06D7EB2468524500048D71 /* ARPractice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E06D8132468524700048D71 /* Build configuration list for PBXNativeTarget "ARPractice" */;
+			buildPhases = (
+				6E06D7E82468524500048D71 /* Sources */,
+				6E06D7E92468524500048D71 /* Frameworks */,
+				6E06D7EA2468524500048D71 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
 			name = ARPractice;
 			productName = ARPractice;
-			productReference = 25175C44245F204C00845932 /* ARPractice.app */;
+			productReference = 6E06D7EC2468524500048D71 /* ARPractice.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,6 +160,9 @@
 				ORGANIZATIONNAME = "Kazumasa Shimomura";
 				TargetAttributes = {
 					25175C43245F204C00845932 = {
+						CreatedOnToolsVersion = 11.4;
+					};
+					6E06D7EB2468524500048D71 = {
 						CreatedOnToolsVersion = 11.4;
 					};
 				};
@@ -115,7 +180,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				25175C43245F204C00845932 /* ARPractice */,
+				25175C43245F204C00845932 /* Measure */,
+				6E06D7EB2468524500048D71 /* ARPractice */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +197,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6E06D7EA2468524500048D71 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E06D7FB2468524700048D71 /* LaunchScreen.storyboard in Resources */,
+				6E06D7F82468524700048D71 /* Preview Assets.xcassets in Resources */,
+				6E06D7F52468524700048D71 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -138,9 +214,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25175C4A245F204C00845932 /* ViewController.swift in Sources */,
+				25175C4A245F204C00845932 /* MeasureViewController.swift in Sources */,
 				25175C48245F204C00845932 /* AppDelegate.swift in Sources */,
 				25175C4C245F204D00845932 /* Experience.rcproject in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6E06D7E82468524500048D71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6E06D7F12468524500048D71 /* ContentView.swift in Sources */,
+				6E06D7EF2468524500048D71 /* AppDelegate.swift in Sources */,
+				6E06D7F32468524500048D71 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +237,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				25175C53245F204E00845932 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6E06D7F92468524700048D71 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6E06D7FA2468524700048D71 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -308,6 +402,46 @@
 			};
 			name = Release;
 		};
+		6E06D8142468524700048D71 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ARPractice/Preview Content\"";
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ARPractice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.s2mr.ARPractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E06D8152468524700048D71 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"ARPractice/Preview Content\"";
+				DEVELOPMENT_TEAM = TKM4VSA3YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = ARPractice/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = jp.s2mr.ARPractice;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -320,11 +454,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25175C58245F204E00845932 /* Build configuration list for PBXNativeTarget "ARPractice" */ = {
+		25175C58245F204E00845932 /* Build configuration list for PBXNativeTarget "Measure" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25175C59245F204E00845932 /* Debug */,
 				25175C5A245F204E00845932 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6E06D8132468524700048D71 /* Build configuration list for PBXNativeTarget "ARPractice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E06D8142468524700048D71 /* Debug */,
+				6E06D8152468524700048D71 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
