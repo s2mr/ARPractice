@@ -8,12 +8,12 @@ struct ContentView : View {
 }
 
 struct ARViewContainer: UIViewRepresentable {
+    let arView = ARView(frame: .zero)
+
     func makeUIView(context: Context) -> ARView {
-
-        let arView = ARView(frame: .zero)
-        let boxAnchor = try! Experience.loadBox()
-        arView.scene.anchors.append(boxAnchor)
-
+        if let box = try? Experience.loadBox() {
+            arView.scene.anchors.append(box)
+        }
         return arView
     }
 
