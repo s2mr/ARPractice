@@ -13,21 +13,25 @@ final class ViewController: UIViewController {
     @IBOutlet private var arView: ARView! {
         didSet {
             arView.session.delegate = self
-            arView.debugOptions = [.showStatistics, .showFeaturePoints]
-            let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
-            arView.scene.addAnchor(anchor)
-            self.anchor = anchor
+            arView.debugOptions = [.showSceneUnderstanding]
         }
     }
 
-    private var anchor: AnchorEntity!
+    private var anchor: AnchorEntity? {
+        didSet {
+            oldValue?.removeFromParent()
+            guard let anchor = anchor else { return }
+            arView.scene.addAnchor(anchor)
+        }
+    }
 
     var startEntity: ModelEntity? {
         didSet {
             oldValue?.removeFromParent()
 
             guard let entity = startEntity else { return }
-            anchor.addChild(entity, preservingWorldTransform: true)
+            anchor = AnchorEntity(world: entity.position)
+            anchor?.addChild(entity, preservingWorldTransform: true)
         }
     }
 
@@ -36,10 +40,7 @@ final class ViewController: UIViewController {
             oldValue?.removeFromParent()
 
             guard let entity = endEntity else { return }
-            anchor.addChild(entity, preservingWorldTransform: true)
-
-            guard let startEntity = startEntity else { return }
-            lineEntity = createLineNode(from: startEntity.position, to: entity.position)
+            anchor?.addChild(entity, preservingWorldTransform: true)
         }
     }
 
@@ -48,7 +49,7 @@ final class ViewController: UIViewController {
             oldValue?.removeFromParent()
 
             guard let entity = lineEntity else { return }
-            anchor.addChild(entity, preservingWorldTransform: true)
+            startEntity?.addChild(entity)
         }
     }
 
@@ -63,10 +64,16 @@ extension ViewController: ARSessionDelegate {
         guard let column = arView.hitTest(arView.center, types: .featurePoint).first?.worldTransform.columns.3 else { return }
 
         let startPosition = startEntity.position
-        let endPosition = column
+        let endPosition = SIMD3(column.x, column.y, column.z)
         let position = SIMD3(endPosition.x - startPosition.x, endPosition.y - startPosition.y, endPosition.z - startPosition.z)
         let distance = sqrt(position.x*position.x + position.y*position.y + position.z*position.z)
         resultLabel.text = String(format: "%.2fm", distance)
+
+        if let lineEntity = lineEntity {
+        }
+        else {
+            lineEntity = createLineNode(from: startEntity.position, to: position)
+        }
     }
 }
 
@@ -93,7 +100,8 @@ private extension ViewController {
     }
 
     func createLineNode(from: SIMD3<Float>, to: SIMD3<Float>) -> ModelEntity {
-        let entity = ModelEntity(mesh: MeshResource.generateBox(width: abs((to-from).x), height: 0.01, depth: 0.01))
+        let box = MeshResource.generateBox(width: abs((to-from).x), height: 0.01, depth: 0.01)
+        let entity = ModelEntity(mesh: box)
         entity.position = SIMD3(from.x, from.y, from.z)
         return entity
     }
