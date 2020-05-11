@@ -22,20 +22,32 @@ final class GreenBox: Entity, HasModel, HasCollision {
     }
 }
 
-struct ARViewContainer: UIViewRepresentable {
-    let arView: ARView = {
-        let view = ARView(frame: .zero)
-        view.debugOptions = [.showStatistics, .showFeaturePoints]
+final class MainARView: ARView {
+    init() {
+        super.init(frame: .zero)
+
+        debugOptions = [.showStatistics, .showFeaturePoints]
         let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
-        view.scene.addAnchor(anchor)
+        scene.addAnchor(anchor)
         let box = GreenBox()
         anchor.addChild(box)
-        view.installGestures(for: box)
-        return view
-    }()
+        installGestures(for: box)
+    }
+
+    @objc required dynamic init?(coder decoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    @objc required dynamic init(frame frameRect: CGRect) {
+        fatalError("init(frame:) has not been implemented")
+    }
+}
+
+struct ARViewContainer: UIViewRepresentable {
+    let arView = MainARView()
 
     func makeUIView(context: Context) -> ARView {
-        return arView
+        arView
     }
 
     func updateUIView(_ uiView: ARView, context: Context) {}
