@@ -7,13 +7,31 @@ struct ContentView : View {
     }
 }
 
+final class GreenBox: Entity, HasModel {
+    required init() {
+        super.init()
+
+        components.set(ModelComponent(
+            mesh: .generateBox(size: [0.05, 0.01, 0.15]),
+            materials: [
+                SimpleMaterial(color: .green, isMetallic: false)
+            ]
+        ))
+    }
+}
+
 struct ARViewContainer: UIViewRepresentable {
-    let arView = ARView(frame: .zero)
+    let arView: ARView = {
+        let view = ARView(frame: .zero)
+        view.debugOptions = [.showStatistics, .showFeaturePoints]
+        let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
+        view.scene.addAnchor(anchor)
+        anchor.addChild(GreenBox())
+//        view.installGestures(for: box)
+        return view
+    }()
 
     func makeUIView(context: Context) -> ARView {
-        if let box = try? Experience.loadBox() {
-            arView.scene.anchors.append(box)
-        }
         return arView
     }
 
