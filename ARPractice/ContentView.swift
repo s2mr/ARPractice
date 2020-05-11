@@ -7,7 +7,7 @@ struct ContentView : View {
     }
 }
 
-final class GreenBox: Entity, HasModel {
+final class GreenBox: Entity, HasModel, HasCollision {
     required init() {
         super.init()
 
@@ -17,6 +17,8 @@ final class GreenBox: Entity, HasModel {
                 SimpleMaterial(color: .green, isMetallic: false)
             ]
         ))
+
+        generateCollisionShapes(recursive: true)
     }
 }
 
@@ -26,8 +28,9 @@ struct ARViewContainer: UIViewRepresentable {
         view.debugOptions = [.showStatistics, .showFeaturePoints]
         let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
         view.scene.addAnchor(anchor)
-        anchor.addChild(GreenBox())
-//        view.installGestures(for: box)
+        let box = GreenBox()
+        anchor.addChild(box)
+        view.installGestures(for: box)
         return view
     }()
 
