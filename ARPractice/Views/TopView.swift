@@ -1,10 +1,12 @@
 import SwiftUI
 import UIKit
 
-struct TopView : View {
+struct TopView: View {
+    @ObservedObject var imagePicker = ImagePicker()
+
     var body: some View {
         ZStack {
-            UIViewContainer(uiView: MainARView())
+            MainARView(imageURL: imagePicker.imageURL)
                 .edgesIgnoringSafeArea(.all)
 
             VStack {
@@ -30,8 +32,7 @@ struct TopView : View {
     }
 
     func showImagePicker() {
-        let imagePicker = UIImagePickerController()
-        hostingController?.present(imagePicker, animated: true)
+        hostingController.call(imagePicker.present(on:))
     }
 }
 

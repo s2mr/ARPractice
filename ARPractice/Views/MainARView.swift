@@ -1,8 +1,11 @@
+import SwiftUI
 import Foundation
 import RealityKit
 import CoreGraphics
 
-final class MainARView: ARView {
+final class _MainARView: ARView {
+    let box = GreenBox()
+
     init() {
         super.init(frame: .zero)
 
@@ -10,7 +13,6 @@ final class MainARView: ARView {
         let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
         scene.addAnchor(anchor)
 
-        let box = GreenBox()
         anchor.addChild(box)
         installGestures(for: box)
     }
@@ -21,5 +23,19 @@ final class MainARView: ARView {
 
     @objc required dynamic init(frame frameRect: CGRect) {
         fatalError("init(frame:) has not been implemented")
+    }
+}
+
+struct MainARView: UIViewRepresentable {
+    var imageURL: URL?
+
+    func makeUIView(context: Context) -> _MainARView {
+        _MainARView()
+    }
+
+    func updateUIView(_ arView: _MainARView, context: Context) {
+        if let imageURL = imageURL {
+            arView.box.imageURL = imageURL
+        }
     }
 }
