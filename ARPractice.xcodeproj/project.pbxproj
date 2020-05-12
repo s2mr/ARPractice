@@ -19,6 +19,7 @@
 		6E06D7F52468524700048D71 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F42468524700048D71 /* Assets.xcassets */; };
 		6E06D7F82468524700048D71 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F72468524700048D71 /* Preview Assets.xcassets */; };
 		6E06D7FB2468524700048D71 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E06D7F92468524700048D71 /* LaunchScreen.storyboard */; };
+		6E774C54246AE2DD0028D169 /* View+HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E774C53246AE2DD0028D169 /* View+HostingController.swift */; };
 		6E8A9273246AD5E60064996B /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A9272246AD5E60064996B /* TopView.swift */; };
 		6E8A9275246AD69A0064996B /* GreenBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A9274246AD69A0064996B /* GreenBox.swift */; };
 		6E8A9278246AD71E0064996B /* UIViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A9277246AD71E0064996B /* UIViewContainer.swift */; };
@@ -41,6 +42,7 @@
 		6E06D7F72468524700048D71 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6E06D7FA2468524700048D71 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6E06D7FC2468524700048D71 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E774C53246AE2DD0028D169 /* View+HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+HostingController.swift"; sourceTree = "<group>"; };
 		6E8A9272246AD5E60064996B /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
 		6E8A9274246AD69A0064996B /* GreenBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenBox.swift; sourceTree = "<group>"; };
 		6E8A9277246AD71E0064996B /* UIViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewContainer.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		6E06D7ED2468524500048D71 /* ARPractice */ = {
 			isa = PBXGroup;
 			children = (
+				6E774C52246AE2C00028D169 /* Extensions */,
 				6E8A9276246AD7120064996B /* Utility */,
 				6E8A9271246AD5DE0064996B /* Views */,
 				6E06D7EE2468524500048D71 /* AppDelegate.swift */,
@@ -117,6 +120,14 @@
 				6E06D7F72468524700048D71 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6E774C52246AE2C00028D169 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E774C53246AE2DD0028D169 /* View+HostingController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		6E8A9271246AD5DE0064996B /* Views */ = {
@@ -249,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E774C54246AE2DD0028D169 /* View+HostingController.swift in Sources */,
 				6E8A9273246AD5E60064996B /* TopView.swift in Sources */,
 				6E06D7F12468524500048D71 /* MainARView.swift in Sources */,
 				6E8A9278246AD71E0064996B /* UIViewContainer.swift in Sources */,

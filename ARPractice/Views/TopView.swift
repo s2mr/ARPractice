@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct TopView : View {
     var body: some View {
@@ -13,7 +14,7 @@ struct TopView : View {
                     Spacer()
 
                     Button(action: {
-                        print("Tapped")
+                        self.showImagePicker()
                     }) {
                         Text("+")
                             .font(.system(.largeTitle))
@@ -26,6 +27,11 @@ struct TopView : View {
                 }
             }
         }
+    }
+
+    func showImagePicker() {
+        let imagePicker = UIImagePickerController()
+        hostingController?.present(imagePicker, animated: true)
     }
 }
 
