@@ -1,5 +1,6 @@
-import SwiftUI
+import Foundation
 import RealityKit
+import CoreGraphics
 
 final class MainARView: ARView {
     init() {

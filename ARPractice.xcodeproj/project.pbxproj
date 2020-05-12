@@ -102,7 +102,6 @@
 				6E8A9276246AD7120064996B /* Utility */,
 				6E8A9271246AD5DE0064996B /* Views */,
 				6E06D7EE2468524500048D71 /* AppDelegate.swift */,
-				6E06D7F02468524500048D71 /* MainARView.swift */,
 				6E06D7F22468524500048D71 /* Experience.rcproject */,
 				6E06D7F42468524700048D71 /* Assets.xcassets */,
 				6E06D7F92468524700048D71 /* LaunchScreen.storyboard */,
@@ -123,6 +122,7 @@
 		6E8A9271246AD5DE0064996B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E06D7F02468524500048D71 /* MainARView.swift */,
 				6E8A9272246AD5E60064996B /* TopView.swift */,
 				6E8A9274246AD69A0064996B /* GreenBox.swift */,
 			);
