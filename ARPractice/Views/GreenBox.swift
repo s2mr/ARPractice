@@ -6,33 +6,27 @@ final class GreenBox: Entity, HasModel, HasCollision {
         didSet {
             guard let url = imageURL else { return }
 
-//            if let resource = try? TextureResource.load(contentsOf: url) {
-//                (model?.materials.first as! SimpleMaterial).baseColor = MaterialColorParameter.texture(resource)
-//            }
-
-            var material = SimpleMaterial(color: .green, isMetallic: false)
-            if let resource = try? TextureResource.load(contentsOf: url) {
-                material.baseColor = MaterialColorParameter.texture(resource)
-            }
-            components.set(ModelComponent(
-                mesh: .generateBox(size: [0.05, 0.01, 0.15]),
-                materials: [material]
-            ))
+            components.set(makeModelComponent(for: url))
         }
     }
 
     required init() {
         super.init()
 
+        components.set(makeModelComponent(for: nil))
+        generateCollisionShapes(recursive: true)
+    }
+
+    func makeModelComponent(for imageURL: URL?) -> ModelComponent {
         var material = SimpleMaterial(color: .green, isMetallic: false)
-        if let resource = try? TextureResource.load(named: "risu") {
+        if let resource = imageURL.map ({ try? TextureResource.load(contentsOf: $0) })
+            ?? (try? TextureResource.load(named: "risu")) {
             material.baseColor = MaterialColorParameter.texture(resource)
         }
-        components.set(ModelComponent(
+
+        return ModelComponent(
             mesh: .generateBox(size: [0.05, 0.01, 0.15]),
             materials: [material]
-        ))
-
-        generateCollisionShapes(recursive: true)
+        )
     }
 }
