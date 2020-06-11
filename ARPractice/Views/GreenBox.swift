@@ -1,0 +1,32 @@
+import Foundation
+import RealityKit
+
+final class GreenBox: Entity, HasModel, HasCollision {
+    var imageURL: URL? {
+        didSet {
+            guard let url = imageURL else { return }
+
+            components.set(makeModelComponent(for: url))
+        }
+    }
+
+    required init() {
+        super.init()
+
+        components.set(makeModelComponent(for: nil))
+        generateCollisionShapes(recursive: true)
+    }
+
+    func makeModelComponent(for imageURL: URL?) -> ModelComponent {
+        var material = SimpleMaterial(color: .green, isMetallic: false)
+        if let resource = imageURL.map ({ try? TextureResource.load(contentsOf: $0) })
+            ?? (try? TextureResource.load(named: "risu")) {
+            material.baseColor = MaterialColorParameter.texture(resource)
+        }
+
+        return ModelComponent(
+            mesh: .generateBox(size: [0.05, 0.01, 0.15]),
+            materials: [material]
+        )
+    }
+}
