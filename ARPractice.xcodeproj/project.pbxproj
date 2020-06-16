@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,11 @@
 		25175C4C245F204D00845932 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 25175C4B245F204D00845932 /* Experience.rcproject */; };
 		25175C51245F204E00845932 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25175C50245F204E00845932 /* Assets.xcassets */; };
 		25175C54245F204E00845932 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25175C52245F204E00845932 /* LaunchScreen.storyboard */; };
+		25A636A82491BF2500A2B215 /* TestUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A636A62491BF2500A2B215 /* TestUIViewController.swift */; };
+		25A636A92491BF2500A2B215 /* TestUIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A636A72491BF2500A2B215 /* TestUIViewController.xib */; };
+		25A636AC2491BF5700A2B215 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25A636AB2491BF5700A2B215 /* RealityUI */; };
+		25A636AF2491BF8900A2B215 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25A636AE2491BF8900A2B215 /* RealityUI */; };
+		25B1989624984ED400ABA820 /* ContainerCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B1989524984ED400ABA820 /* ContainerCube.swift */; };
 		25BD62AA245F2345003DFB13 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BD62A9245F2345003DFB13 /* ViewController.xib */; };
 		6E06D7EF2468524500048D71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7EE2468524500048D71 /* AppDelegate.swift */; };
 		6E06D7F12468524500048D71 /* MainARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7F02468524500048D71 /* MainARView.swift */; };
@@ -35,6 +40,9 @@
 		25175C50245F204E00845932 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		25175C53245F204E00845932 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25175C55245F204E00845932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25A636A62491BF2500A2B215 /* TestUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUIViewController.swift; sourceTree = "<group>"; };
+		25A636A72491BF2500A2B215 /* TestUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestUIViewController.xib; sourceTree = "<group>"; };
+		25B1989524984ED400ABA820 /* ContainerCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCube.swift; sourceTree = "<group>"; };
 		25BD62A9245F2345003DFB13 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		6E06D7EC2468524500048D71 /* ARPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E06D7EE2468524500048D71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A636AC2491BF5700A2B215 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A636AF2491BF8900A2B215 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +86,7 @@
 				25175C46245F204C00845932 /* Measure */,
 				6E06D7ED2468524500048D71 /* ARPractice */,
 				25175C45245F204C00845932 /* Products */,
+				25A636AD2491BF8900A2B215 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,6 +111,23 @@
 				25175C55245F204E00845932 /* Info.plist */,
 			);
 			path = Measure;
+			sourceTree = "<group>";
+		};
+		25A636A52491BF2500A2B215 /* TestUI */ = {
+			isa = PBXGroup;
+			children = (
+				25A636A62491BF2500A2B215 /* TestUIViewController.swift */,
+				25B1989524984ED400ABA820 /* ContainerCube.swift */,
+				25A636A72491BF2500A2B215 /* TestUIViewController.xib */,
+			);
+			path = TestUI;
+			sourceTree = "<group>";
+		};
+		25A636AD2491BF8900A2B215 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6E06D7ED2468524500048D71 /* ARPractice */ = {
@@ -138,6 +166,7 @@
 		6E8A9271246AD5DE0064996B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25A636A52491BF2500A2B215 /* TestUI */,
 				6E06D7F02468524500048D71 /* MainARView.swift */,
 				6E8A9272246AD5E60064996B /* TopView.swift */,
 				6E774C55246AE4530028D169 /* ImagePicker.swift */,
@@ -170,6 +199,9 @@
 			dependencies = (
 			);
 			name = Measure;
+			packageProductDependencies = (
+				25A636AB2491BF5700A2B215 /* RealityUI */,
+			);
 			productName = ARPractice;
 			productReference = 25175C44245F204C00845932 /* Measure.app */;
 			productType = "com.apple.product-type.application";
@@ -187,6 +219,9 @@
 			dependencies = (
 			);
 			name = ARPractice;
+			packageProductDependencies = (
+				25A636AE2491BF8900A2B215 /* RealityUI */,
+			);
 			productName = ARPractice;
 			productReference = 6E06D7EC2468524500048D71 /* ARPractice.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +253,9 @@
 				Base,
 			);
 			mainGroup = 25175C3B245F204C00845932;
+			packageReferences = (
+				25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */,
+			);
 			productRefGroup = 25175C45245F204C00845932 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -245,6 +283,7 @@
 			files = (
 				6E06D7FB2468524700048D71 /* LaunchScreen.storyboard in Resources */,
 				6E06D7F82468524700048D71 /* Preview Assets.xcassets in Resources */,
+				25A636A92491BF2500A2B215 /* TestUIViewController.xib in Resources */,
 				6E06D7F52468524700048D71 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,8 +305,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A636A82491BF2500A2B215 /* TestUIViewController.swift in Sources */,
 				6E774C54246AE2DD0028D169 /* View+HostingController.swift in Sources */,
 				6E8A9273246AD5E60064996B /* TopView.swift in Sources */,
+				25B1989624984ED400ABA820 /* ContainerCube.swift in Sources */,
 				6E774C58246AE5EB0028D169 /* Optional+Call.swift in Sources */,
 				6E06D7F12468524500048D71 /* MainARView.swift in Sources */,
 				6E8A9278246AD71E0064996B /* UIViewContainer.swift in Sources */,
@@ -521,6 +562,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/RealityUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		25A636AB2491BF5700A2B215 /* RealityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */;
+			productName = RealityUI;
+		};
+		25A636AE2491BF8900A2B215 /* RealityUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */;
+			productName = RealityUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25175C3C245F204C00845932 /* Project object */;
 }
