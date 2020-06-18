@@ -44,6 +44,18 @@ final class TestUIViewController: UIViewController {
         switchUI.transform = Transform(scale: .init(repeating: 0.03), rotation: .init())
         horizontalAnchor.addChild(switchUI)
 
+        let rotateSwitch = RUISwitch() { switchUI in
+            if switchUI.isOn {
+                tumbler.startSpin()
+            }
+            else {
+                tumbler.stopAllAnimations()
+            }
+        }
+        rotateSwitch.transform = Transform(scale: .init(repeating: 0.03), rotation: .init())
+        rotateSwitch.position = [-0.06, 0, 0]
+        horizontalAnchor.addChild(rotateSwitch)
+
         let button = RUIButton()
         button.transform = Transform(
             scale: .init(repeating: 0.03),

@@ -1,5 +1,6 @@
 import RealityKit
 import UIKit
+import Combine
 
 public final class ContainerCube: Entity, HasPhysicsBody, HasModel {
     private static var boxPositions: [SIMD3<Float>] = [
@@ -39,6 +40,25 @@ public final class ContainerCube: Entity, HasPhysicsBody, HasModel {
 
     func spawnCube() {
         addChild(Cube())
+    }
+
+    func startSpin() {
+        let spun180 = matrix_multiply(
+            transform.matrix,
+            Transform(
+                scale: .one,
+                rotation: .init(angle: .pi / 2, axis: [0, 0, 1]),
+                translation: .zero
+            ).matrix
+        )
+
+        move(to: Transform(matrix: spun180), relativeTo: parent, duration: 1, timingFunction: .linear)
+
+        var spinCancellable: Cancellable?
+        spinCancellable = scene?.subscribe(to: AnimationEvents.PlaybackCompleted.self, on: self, { [weak self] _ in
+            spinCancellable?.cancel()
+            self?.startSpin()
+        })
     }
 }
 
