@@ -30,17 +30,29 @@ final class TestUIViewController: UIViewController {
     private func setupSwitch() {
         RealityUI.registerComponents()
 
+        let tumbler = ContainerCube()
+        tumbler.color = .gray
+        tumbler.position = [0, 0, -0.1]
+        horizontalAnchor.addChild(tumbler)
+
         let switchUI = RUISwitch(
-            switchness: SwitchComponent(isOn: false, onColor: .black, offColor: .black, borderColor: .red, thumbColor: .blue),
-            RUI: RUIComponent(isEnabled: true, respondsToLighting: true)
+            switchness: SwitchComponent(isOn: false, onColor: .green, offColor: .gray, borderColor: .black, thumbColor: .white),
+            RUI: RUIComponent(isEnabled: true, respondsToLighting: false)
         ) { switchUI in
-            print(switchUI.isOn)
+            tumbler.color = switchUI.isOn ? .red : .blue
         }
         switchUI.transform = Transform(scale: .init(repeating: 0.03), rotation: .init())
         horizontalAnchor.addChild(switchUI)
 
-        let tumbler = ContainerCube()
-        tumbler.position = [0, 0, -0.1]
-        horizontalAnchor.addChild(tumbler)
+        let button = RUIButton()
+        button.transform = Transform(
+            scale: .init(repeating: 0.03),
+            rotation: simd_quatf(angle: -.pi / 2, axis: [1, 0, 0])
+        )
+        button.touchUpCompleted = { _ in
+            tumbler.spawnCube()
+        }
+        button.position = [0.05, 0, 0]
+        horizontalAnchor.addChild(button)
     }
 }
