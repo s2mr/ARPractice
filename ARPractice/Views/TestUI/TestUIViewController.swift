@@ -3,6 +3,7 @@ import RealityUI
 import RealityKit
 import ARKit
 import Combine
+import FocusEntity
 
 final class TestUIViewController: UIViewController {
     private let horizontalAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.01, 0.01])
@@ -16,7 +17,7 @@ final class TestUIViewController: UIViewController {
             arView.scene.addAnchor(horizontalAnchor)
 
             let config = ARWorldTrackingConfiguration()
-            config.planeDetection = [.horizontal]
+            config.planeDetection = [.horizontal, .vertical]
             arView.session.run(config, options: [])
         }
     }
@@ -55,6 +56,21 @@ final class TestUIViewController: UIViewController {
         rotateSwitch.transform = Transform(scale: .init(repeating: 0.03), rotation: .init())
         rotateSwitch.position = [-0.06, 0, 0]
         horizontalAnchor.addChild(rotateSwitch)
+
+        let rotateText = ModelEntity(
+            mesh: MeshResource.generateText(
+                "Rotate!",
+                font: .systemFont(ofSize: 1)
+            ),
+            materials: [SimpleMaterial(color: .blue, isMetallic: false)]
+        )
+        rotateText.transform = Transform(scale: .init(repeating: 0.01), rotation: .init(angle: -.pi / 2, axis: [1, 0, 0]))
+        rotateText.position = [-0.07, 0, 0.04]
+        horizontalAnchor.addChild(rotateText)
+
+        let focusSquare = FESquare()
+        focusSquare.viewDelegate = arView
+        focusSquare.setAutoUpdate(to: true)
 
         let button = RUIButton()
         button.transform = Transform(

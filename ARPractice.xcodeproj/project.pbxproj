@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2509E49B249C445200886742 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 2509E49A249C445200886742 /* FocusEntity */; };
+		2509E49D249C450900886742 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = 2509E49C249C450900886742 /* FocusEntity */; };
 		25175C48245F204C00845932 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C47245F204C00845932 /* AppDelegate.swift */; };
 		25175C4A245F204C00845932 /* MeasureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25175C49245F204C00845932 /* MeasureViewController.swift */; };
 		25175C4C245F204D00845932 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 25175C4B245F204D00845932 /* Experience.rcproject */; };
@@ -16,6 +18,10 @@
 		25A636A92491BF2500A2B215 /* TestUIViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A636A72491BF2500A2B215 /* TestUIViewController.xib */; };
 		25A636AC2491BF5700A2B215 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25A636AB2491BF5700A2B215 /* RealityUI */; };
 		25A636AF2491BF8900A2B215 /* RealityUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25A636AE2491BF8900A2B215 /* RealityUI */; };
+		25A8ADD824A0F5BC0005C455 /* TestQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A8ADD724A0F5BC0005C455 /* TestQRViewController.swift */; };
+		25A8ADDA24A0F5D60005C455 /* TestQRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25A8ADD924A0F5D60005C455 /* TestQRViewController.xib */; };
+		25A8ADDC24A0FB200005C455 /* QRScene.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 25A8ADDB24A0F6DA0005C455 /* QRScene.rcproject */; };
+		25A8ADDE24A102E30005C455 /* QRCardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A8ADDD24A102E30005C455 /* QRCardEntity.swift */; };
 		25B1989624984ED400ABA820 /* ContainerCube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B1989524984ED400ABA820 /* ContainerCube.swift */; };
 		25BD62AA245F2345003DFB13 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25BD62A9245F2345003DFB13 /* ViewController.xib */; };
 		6E06D7EF2468524500048D71 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E06D7EE2468524500048D71 /* AppDelegate.swift */; };
@@ -42,6 +48,10 @@
 		25175C55245F204E00845932 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25A636A62491BF2500A2B215 /* TestUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUIViewController.swift; sourceTree = "<group>"; };
 		25A636A72491BF2500A2B215 /* TestUIViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestUIViewController.xib; sourceTree = "<group>"; };
+		25A8ADD724A0F5BC0005C455 /* TestQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQRViewController.swift; sourceTree = "<group>"; };
+		25A8ADD924A0F5D60005C455 /* TestQRViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestQRViewController.xib; sourceTree = "<group>"; };
+		25A8ADDB24A0F6DA0005C455 /* QRScene.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = QRScene.rcproject; sourceTree = "<group>"; };
+		25A8ADDD24A102E30005C455 /* QRCardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCardEntity.swift; sourceTree = "<group>"; };
 		25B1989524984ED400ABA820 /* ContainerCube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCube.swift; sourceTree = "<group>"; };
 		25BD62A9245F2345003DFB13 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		6E06D7EC2468524500048D71 /* ARPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2509E49B249C445200886742 /* FocusEntity in Frameworks */,
 				25A636AC2491BF5700A2B215 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2509E49D249C450900886742 /* FocusEntity in Frameworks */,
 				25A636AF2491BF8900A2B215 /* RealityUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +142,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25A8ADD624A0F5AB0005C455 /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				25A8ADD724A0F5BC0005C455 /* TestQRViewController.swift */,
+				25A8ADD924A0F5D60005C455 /* TestQRViewController.xib */,
+				25A8ADDB24A0F6DA0005C455 /* QRScene.rcproject */,
+				25A8ADDD24A102E30005C455 /* QRCardEntity.swift */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
 		6E06D7ED2468524500048D71 /* ARPractice */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +189,7 @@
 		6E8A9271246AD5DE0064996B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25A8ADD624A0F5AB0005C455 /* QR */,
 				25A636A52491BF2500A2B215 /* TestUI */,
 				6E06D7F02468524500048D71 /* MainARView.swift */,
 				6E8A9272246AD5E60064996B /* TopView.swift */,
@@ -201,6 +225,7 @@
 			name = Measure;
 			packageProductDependencies = (
 				25A636AB2491BF5700A2B215 /* RealityUI */,
+				2509E49A249C445200886742 /* FocusEntity */,
 			);
 			productName = ARPractice;
 			productReference = 25175C44245F204C00845932 /* Measure.app */;
@@ -221,6 +246,7 @@
 			name = ARPractice;
 			packageProductDependencies = (
 				25A636AE2491BF8900A2B215 /* RealityUI */,
+				2509E49C249C450900886742 /* FocusEntity */,
 			);
 			productName = ARPractice;
 			productReference = 6E06D7EC2468524500048D71 /* ARPractice.app */;
@@ -255,6 +281,7 @@
 			mainGroup = 25175C3B245F204C00845932;
 			packageReferences = (
 				25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */,
+				2509E499249C445200886742 /* XCRemoteSwiftPackageReference "FocusEntity" */,
 			);
 			productRefGroup = 25175C45245F204C00845932 /* Products */;
 			projectDirPath = "";
@@ -283,6 +310,7 @@
 			files = (
 				6E06D7FB2468524700048D71 /* LaunchScreen.storyboard in Resources */,
 				6E06D7F82468524700048D71 /* Preview Assets.xcassets in Resources */,
+				25A8ADDA24A0F5D60005C455 /* TestQRViewController.xib in Resources */,
 				25A636A92491BF2500A2B215 /* TestUIViewController.xib in Resources */,
 				6E06D7F52468524700048D71 /* Assets.xcassets in Resources */,
 			);
@@ -309,13 +337,16 @@
 				6E774C54246AE2DD0028D169 /* View+HostingController.swift in Sources */,
 				6E8A9273246AD5E60064996B /* TopView.swift in Sources */,
 				25B1989624984ED400ABA820 /* ContainerCube.swift in Sources */,
+				25A8ADDC24A0FB200005C455 /* QRScene.rcproject in Sources */,
 				6E774C58246AE5EB0028D169 /* Optional+Call.swift in Sources */,
 				6E06D7F12468524500048D71 /* MainARView.swift in Sources */,
 				6E8A9278246AD71E0064996B /* UIViewContainer.swift in Sources */,
 				6E06D7EF2468524500048D71 /* AppDelegate.swift in Sources */,
 				6E774C56246AE4530028D169 /* ImagePicker.swift in Sources */,
 				6E06D7F32468524500048D71 /* Experience.rcproject in Sources */,
+				25A8ADDE24A102E30005C455 /* QRCardEntity.swift in Sources */,
 				6E8A9275246AD69A0064996B /* GreenBox.swift in Sources */,
+				25A8ADD824A0F5BC0005C455 /* TestQRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +595,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2509E499249C445200886742 /* XCRemoteSwiftPackageReference "FocusEntity" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maxxfrazer/FocusEntity";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.1;
+			};
+		};
 		25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/maxxfrazer/RealityUI";
@@ -575,6 +614,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2509E49A249C445200886742 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2509E499249C445200886742 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
+		2509E49C249C450900886742 /* FocusEntity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2509E499249C445200886742 /* XCRemoteSwiftPackageReference "FocusEntity" */;
+			productName = FocusEntity;
+		};
 		25A636AB2491BF5700A2B215 /* RealityUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 25A636AA2491BF5700A2B215 /* XCRemoteSwiftPackageReference "RealityUI" */;
