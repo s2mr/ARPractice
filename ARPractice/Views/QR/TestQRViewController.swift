@@ -29,5 +29,6 @@ final class TestQRViewController: UIViewController {
             print("Tapped")
         }
         horizontalAnchor.addChild(qrCard)
+        qrCard.startMotion()
     }
 }
