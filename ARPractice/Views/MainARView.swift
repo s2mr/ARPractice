@@ -9,7 +9,7 @@ final class _MainARView: ARView {
     init() {
         super.init(frame: .zero)
 
-        debugOptions = [.showStatistics, .showPhysics, .showSceneUnderstanding, .showAnchorGeometry]
+        debugOptions = [.showStatistics, .showPhysics, .showAnchorGeometry]
         let anchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.15, 0.15])
         scene.addAnchor(anchor)
 

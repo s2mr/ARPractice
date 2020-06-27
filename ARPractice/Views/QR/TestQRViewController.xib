@@ -10,6 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TestQRViewController" customModule="ARPractice" customModuleProvider="target">
             <connections>
                 <outlet property="arView" destination="Zpr-4r-JMl" id="8dX-oc-vVJ"/>
+                <outlet property="mappingStatusLabel" destination="gE2-y5-Utg" id="icq-fL-QKc"/>
+                <outlet property="sendButton" destination="dD9-fC-Ncg" id="0Ji-5c-8Sc"/>
+                <outlet property="sessionInfoLabel" destination="e0D-B0-YaF" id="aER-Lh-0hh"/>
                 <outlet property="view" destination="iN0-l3-epB" id="xzQ-qb-Cwo"/>
             </connections>
         </placeholder>
@@ -21,13 +24,41 @@
                 <arView multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zpr-4r-JMl">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </arView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE2-y5-Utg">
+                    <rect key="frame" x="0.0" y="44" width="414" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0D-B0-YaF">
+                    <rect key="frame" x="0.0" y="64.5" width="414" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dD9-fC-Ncg">
+                    <rect key="frame" x="147" y="818" width="120" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="4Vj-X2-fT0"/>
+                        <constraint firstAttribute="height" constant="44" id="Bvq-DB-Xqs"/>
+                    </constraints>
+                    <state key="normal" title="Send"/>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="dD9-fC-Ncg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="6iV-E5-J0o"/>
                 <constraint firstAttribute="bottom" secondItem="Zpr-4r-JMl" secondAttribute="bottom" id="7Qz-qr-O71"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gE2-y5-Utg" secondAttribute="trailing" id="Hm8-co-ODx"/>
+                <constraint firstItem="e0D-B0-YaF" firstAttribute="top" secondItem="gE2-y5-Utg" secondAttribute="bottom" id="Jot-Bv-ic2"/>
+                <constraint firstItem="gE2-y5-Utg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Lef-Oa-cYf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="dD9-fC-Ncg" secondAttribute="bottom" id="Mqq-29-gzS"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Zpr-4r-JMl" secondAttribute="trailing" id="Tr8-sY-GRE"/>
                 <constraint firstItem="Zpr-4r-JMl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Uvl-SG-ilr"/>
+                <constraint firstItem="gE2-y5-Utg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dZh-Yt-Yjg"/>
                 <constraint firstItem="Zpr-4r-JMl" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dbv-Q2-kgS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="e0D-B0-YaF" secondAttribute="trailing" id="mM9-J1-NQb"/>
+                <constraint firstItem="e0D-B0-YaF" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="wl7-Zk-g0g"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="131.8840579710145" y="152.67857142857142"/>
