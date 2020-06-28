@@ -40,15 +40,15 @@ class MultipeerSession: NSObject {
         serviceBrowser.delegate = self
         serviceBrowser.startBrowsingForPeers()
     }
-    
-    func sendToAllPeers(_ data: Data) {
+
+    func sendToAllPeers(_ data: Data, reliably: Bool) {
         do {
-            try session.send(data, toPeers: session.connectedPeers, with: .reliable)
+            try session.send(data, toPeers: connectedPeers, with: reliably ? .reliable : .unreliable)
         } catch {
-            print("error sending data to peers: \(error.localizedDescription)")
+            print("error sending data to peers \(connectedPeers): \(error.localizedDescription)")
         }
     }
-    
+
     var connectedPeers: [MCPeerID] {
         return session.connectedPeers
     }
