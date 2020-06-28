@@ -14,19 +14,18 @@ final class TestQRViewController: UIViewController {
             arView.enableRealityUIGestures(.all)
             arView.scene.addAnchor(horizontalAnchor)
             arView.session.delegate = self
+            arView.scene.synchronizationService = try? MultipeerConnectivityService(
+                session: multipeerSession.session
+            )
         }
     }
 
     @IBOutlet private weak var mappingStatusLabel: UILabel!
     @IBOutlet private weak var sessionInfoLabel: UILabel!
-    @IBOutlet private weak var sendButton: UIButton! {
-        didSet {
-            sendButton.addTarget(self, action: #selector(self.sendButtonTapped), for: .touchUpInside)
-        }
-    }
+    @IBOutlet private weak var sendButton: UIButton!
     
     private let horizontalAnchor = AnchorEntity(plane: .horizontal, minimumBounds: [0.01, 0.01])
-    var multipeerSession: MultipeerSession!
+    var multipeerSession: MultipeerSession! = MultipeerSession(receivedDataHandler: { _, _ in }, connectedHandler: {})
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,52 +35,13 @@ final class TestQRViewController: UIViewController {
         config.planeDetection = [.horizontal]
         arView.session.run(config, options: [])
 
-        multipeerSession = MultipeerSession(
-            receivedDataHandler: receivedData,
-            connectedHandler: { [weak self] in
-                guard let me = self else { return }
-                print("Now connected")
-
-                let qrCard = QRCardEntity()
-                qrCard.cardTapped = {
-                    print("Tapped")
-                }
-                qrCard.color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
-                me.horizontalAnchor.addChild(qrCard)
-                qrCard.startMotion()
-
-                guard let data = try? NSKeyedArchiver.archivedData(withRootObject: me.horizontalAnchor, requiringSecureCoding: true)
-                    else { fatalError("can't encode anchor") }
-                me.multipeerSession.sendToAllPeers(data)
-            }
-        )
-    }
-
-    var mapProvider: MCPeerID?
-    /// - Tag: ReceiveData
-    private func receivedData(_ data: Data, from peer: MCPeerID) {
-        do {
-            if let worldMap = try NSKeyedUnarchiver.unarchivedObject(ofClass: ARWorldMap.self, from: data) {
-                // Run the session with the received world map.
-                let configuration = ARWorldTrackingConfiguration()
-                configuration.planeDetection = .horizontal
-                configuration.initialWorldMap = worldMap
-                arView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-
-                // Remember who provided the map for showing UI feedback.
-                mapProvider = peer
-            }
-            else
-                if let anchor = try NSKeyedUnarchiver.unarchivedObject(ofClass: AnchorEntity.self, from: data) {
-                    // Add anchor to the session, ARSCNView delegate adds visible content.
-                    arView.session.add(anchor: anchor)
-                }
-                else {
-                    print("unknown data recieved from \(peer)")
-            }
-        } catch {
-            print("can't decode data recieved from \(peer)")
+        let qrCard = QRCardEntity()
+        qrCard.cardTapped = {
+            print("Tapped")
         }
+        qrCard.color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
+        horizontalAnchor.addChild(qrCard)
+        qrCard.startMotion()
     }
 
     private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
@@ -93,7 +53,7 @@ final class TestQRViewController: UIViewController {
             // No planes detected; provide instructions for this app's AR interactions.
             message = "Move around to map the environment, or wait to join a shared session."
 
-        case .normal where !multipeerSession.connectedPeers.isEmpty && mapProvider == nil:
+        case .normal where !multipeerSession.connectedPeers.isEmpty:
             let peerNames = multipeerSession.connectedPeers.map({ $0.displayName }).joined(separator: ", ")
             message = "Connected with \(peerNames)."
 
@@ -105,10 +65,6 @@ final class TestQRViewController: UIViewController {
 
         case .limited(.insufficientFeatures):
             message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
-
-        case .limited(.initializing) where mapProvider != nil,
-             .limited(.relocalizing) where mapProvider != nil:
-            message = "Received map from \(mapProvider!.displayName)."
 
         case .limited(.relocalizing):
             message = "Resuming session — move to where you were when the session was interrupted."
@@ -123,16 +79,6 @@ final class TestQRViewController: UIViewController {
         }
 
         sessionInfoLabel.text = message
-    }
-
-    @objc private func sendButtonTapped() {
-        arView.session.getCurrentWorldMap { worldMap, error in
-            guard let map = worldMap
-                else { print("Error: \(error!.localizedDescription)"); return }
-            guard let data = try? NSKeyedArchiver.archivedData(withRootObject: map, requiringSecureCoding: true)
-                else { fatalError("can't encode map") }
-            self.multipeerSession.sendToAllPeers(data)
-        }
     }
 }
 

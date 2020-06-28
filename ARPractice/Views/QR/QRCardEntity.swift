@@ -17,6 +17,8 @@ final class QRCardEntity: Entity, HasModel {
     required init() {
         super.init()
 
+        synchronization?.ownershipTransferMode = .autoAccept
+
         twitterCard.actions.cardTapped.onAction = { [weak self] _ in
             self?.cardTapped?()
         }

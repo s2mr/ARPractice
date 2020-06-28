@@ -12,7 +12,7 @@ class MultipeerSession: NSObject {
     static let serviceType = "ar-multi-sample"
     
     private let myPeerID = MCPeerID(displayName: UIDevice.current.name)
-    private var session: MCSession!
+    private(set) var session: MCSession!
     private var serviceAdvertiser: MCNearbyServiceAdvertiser!
     private var serviceBrowser: MCNearbyServiceBrowser!
     
