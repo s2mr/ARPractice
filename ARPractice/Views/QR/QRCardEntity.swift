@@ -6,14 +6,13 @@ import RealityUI
 final class QRCardEntity: Entity, HasModel {
     /// これがModelEntityではなくEntityになっている可能性が高い
     let twitterCard = try! QRScene.loadTwitterCard()
-    var cardContainer: HasModel {
-        twitterCard.allChildren().first { $0.name == "CardContainer" }!.children[0] as! HasModel
-    }
+
+    let cardContainer: HasModel
+
     var color: UIColor? {
         didSet {
             guard let color = color else { return }
-            model?.materials = [SimpleMaterial.init(color: color, isMetallic: false)]
-//            cardContainer.model?.materials = [SimpleMaterial.init(color: color!, isMetallic: false)]
+            cardContainer.model?.materials = [SimpleMaterial.init(color: color, isMetallic: false)]
         }
     }
 
@@ -26,18 +25,20 @@ final class QRCardEntity: Entity, HasModel {
     }
 
     required init() {
+        cardContainer = twitterCard.allChildren().first { $0.name == "CardContainer" }?.children[0] as! HasModel
+
         super.init()
 
         twitterCard.actions.cardTapped.onAction = { [weak self] _ in
             self?.cardTapped?()
         }
-//        addChild(twitterCard)
-//        addChild(ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: color ?? .white, isMetallic: false)]))
-        model = ModelComponent(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: color ?? .white, isMetallic: false)])
+
+        addChild(twitterCard.cardObject!)
+        twitterCard.cardObject?.addChild(twitterCard)
     }
 
     func startMotion() {
-        twitterCard.notifications.startMotion.post()
+//        twitterCard.notifications.startMotion.post()
     }
 }
 

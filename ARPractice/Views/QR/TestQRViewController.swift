@@ -11,7 +11,7 @@ final class TestQRViewController: UIViewController {
             arView.automaticallyConfigureSession = false
             arView.cameraMode = .ar
             arView.renderOptions.insert(.disableGroundingShadows)
-            arView.debugOptions = [.showAnchorOrigins, .showFeaturePoints, .showWorldOrigin]
+            arView.debugOptions = [.showFeaturePoints]
             arView.enableRealityUIGestures(.all)
             arView.scene.addAnchor(horizontalAnchor)
             arView.session.delegate = self
@@ -20,6 +20,9 @@ final class TestQRViewController: UIViewController {
 
     var anchorColorPayload = AnchorColorPayload() {
         didSet {
+            // Send only my added data
+            guard anchorColorPayload.senderSessionIdentifier == arView.session.identifier else { return }
+
             multipeerSession.sendToAllPeers(
                 try! JSONEncoder().encode(anchorColorPayload),
                 reliably: true
@@ -60,6 +63,7 @@ final class TestQRViewController: UIViewController {
             // Add an ARAnchor at the touch location with a special name you check later in `session(_:didAdd:)`.
             let anchor = ARAnchor(name: "QRCardAnchor", transform: firstResult.worldTransform)
             let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
+            anchorColorPayload.senderSessionIdentifier = arView.session.identifier
             anchorColorPayload.colors[anchor.identifier] = ColorPayload(colorHex: color.hex)
             arView.session.add(anchor: anchor)
         } else {
@@ -108,17 +112,6 @@ extension TestQRViewController: ARSessionDelegate {
                 }
                 qrCard.color = (anchorColorPayload.colors[anchor.identifier]?.colorHex).map(UIColor.init)
                 qrCard.startMotion()
-
-//                // Create a cube at the location of the anchor.
-//                let boxLength: Float = 0.05
-//                // Color the cube based on the user that placed it.
-//                let qrCard = ModelEntity(mesh: MeshResource.generateBox(size: boxLength),
-//                                              materials: [SimpleMaterial(color: color, isMetallic: true)])
-//                // Offset the cube by half its length to align its bottom with the real-world surface.
-//                qrCard.position = [0, boxLength / 2, 0]
-
-                // Attach the cube to the ARAnchor via an AnchorEntity.
-                //   World origin -> ARAnchor -> AnchorEntity -> ModelEntity
                 let anchorEntity = AnchorEntity(anchor: anchor)
                 anchorEntity.addChild(qrCard)
                 arView.scene.addAnchor(anchorEntity)
@@ -134,8 +127,6 @@ extension TestQRViewController: ARSessionDelegate {
             // Use reliable mode if the data is critical, and unreliable mode if the data is optional.
             let dataIsCritical = data.priority == .critical
             multipeerSession.sendToAllPeers(encodedData, reliably: dataIsCritical)
-        } else {
-            print("Deferred sending collaboration to later because there are no peers.")
         }
     }
 
