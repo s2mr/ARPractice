@@ -11,7 +11,9 @@ final class QRCardEntity: Entity, HasModel {
     }
     var color: UIColor? {
         didSet {
-            cardContainer.model?.materials = [SimpleMaterial.init(color: color!, isMetallic: false)]
+            guard let color = color else { return }
+            model?.materials = [SimpleMaterial.init(color: color, isMetallic: false)]
+//            cardContainer.model?.materials = [SimpleMaterial.init(color: color!, isMetallic: false)]
         }
     }
 
@@ -29,10 +31,9 @@ final class QRCardEntity: Entity, HasModel {
         twitterCard.actions.cardTapped.onAction = { [weak self] _ in
             self?.cardTapped?()
         }
-        addChild(twitterCard)
-        twitterCard.position = -twitterCard.visualBounds(relativeTo: nil).center
-
-        addChild(ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: color ?? .white, isMetallic: false)]))
+//        addChild(twitterCard)
+//        addChild(ModelEntity(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: color ?? .white, isMetallic: false)]))
+        model = ModelComponent(mesh: .generateBox(size: 0.1), materials: [SimpleMaterial(color: color ?? .white, isMetallic: false)])
     }
 
     func startMotion() {

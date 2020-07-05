@@ -18,6 +18,15 @@ final class TestQRViewController: UIViewController {
         }
     }
 
+    var anchorColorPayload = AnchorColorPayload() {
+        didSet {
+            multipeerSession.sendToAllPeers(
+                try! JSONEncoder().encode(anchorColorPayload),
+                reliably: true
+            )
+        }
+    }
+
     @IBOutlet private weak var mappingStatusLabel: UILabel!
     @IBOutlet private weak var sessionInfoLabel: UILabel!
     @IBOutlet private weak var sendButton: UIButton!
@@ -50,6 +59,8 @@ final class TestQRViewController: UIViewController {
         if let firstResult = results.first {
             // Add an ARAnchor at the touch location with a special name you check later in `session(_:didAdd:)`.
             let anchor = ARAnchor(name: "QRCardAnchor", transform: firstResult.worldTransform)
+            let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
+            anchorColorPayload.colors[anchor.identifier] = ColorPayload(colorHex: color.hex)
             arView.session.add(anchor: anchor)
         } else {
             print("Warning: Object placement failed.")
@@ -91,12 +102,11 @@ extension TestQRViewController: ARSessionDelegate {
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
             if anchor.name == "QRCardAnchor" {
-                let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
                 let qrCard = QRCardEntity()
                 qrCard.cardTapped = {
                     print("Tapped")
                 }
-                qrCard.color = color
+                qrCard.color = (anchorColorPayload.colors[anchor.identifier]?.colorHex).map(UIColor.init)
                 qrCard.startMotion()
 
 //                // Create a cube at the location of the anchor.
@@ -132,6 +142,10 @@ extension TestQRViewController: ARSessionDelegate {
     func receivedData(_ data: Data, from peer: MCPeerID) {
         if let collaborationData = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARSession.CollaborationData.self, from: data) {
             return arView.session.update(with: collaborationData)
+        }
+        if let anchorColorPayload = try? JSONDecoder().decode(AnchorColorPayload.self, from: data) {
+            print(anchorColorPayload)
+            self.anchorColorPayload = anchorColorPayload
         }
         else {
             print("Data is broken")
