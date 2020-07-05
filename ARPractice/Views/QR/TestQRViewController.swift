@@ -11,6 +11,7 @@ final class TestQRViewController: UIViewController {
             arView.automaticallyConfigureSession = false
             arView.cameraMode = .ar
             arView.renderOptions.insert(.disableGroundingShadows)
+            arView.debugOptions = [.showAnchorOrigins, .showFeaturePoints, .showWorldOrigin]
             arView.enableRealityUIGestures(.all)
             arView.scene.addAnchor(horizontalAnchor)
             arView.session.delegate = self
@@ -27,6 +28,8 @@ final class TestQRViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        UIApplication.shared.isIdleTimerDisabled = true
+
         multipeerSession = MultipeerSession(
             receivedDataHandler: receivedData(_:from:),
             connectedHandler: {}
@@ -34,8 +37,8 @@ final class TestQRViewController: UIViewController {
         let config = ARWorldTrackingConfiguration()
         config.isCollaborationEnabled = true
         config.planeDetection = [.horizontal]
+        config.environmentTexturing = .automatic
         arView.session.run(config, options: [])
-
         arView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recognizer:))))
     }
 
@@ -48,47 +51,19 @@ final class TestQRViewController: UIViewController {
             // Add an ARAnchor at the touch location with a special name you check later in `session(_:didAdd:)`.
             let anchor = ARAnchor(name: "QRCardAnchor", transform: firstResult.worldTransform)
             arView.session.add(anchor: anchor)
-
         } else {
             print("Warning: Object placement failed.")
         }
     }
 
     private func updateSessionInfoLabel(for frame: ARFrame, trackingState: ARCamera.TrackingState) {
-        // Update the UI to provide feedback on the state of the AR experience.
-        let message: String
+        let peerMessage = multipeerSession.connectedPeers.isEmpty
+            ? "Wait to join a shared session."
+            : "Connected with" + multipeerSession.connectedPeers.map({ $0.displayName }).joined(separator: ", ")
 
-        switch trackingState {
-        case .normal where frame.anchors.isEmpty && multipeerSession.connectedPeers.isEmpty:
-            // No planes detected; provide instructions for this app's AR interactions.
-            message = "Move around to map the environment, or wait to join a shared session."
-
-        case .normal where !multipeerSession.connectedPeers.isEmpty:
-            let peerNames = multipeerSession.connectedPeers.map({ $0.displayName }).joined(separator: ", ")
-            message = "Connected with \(peerNames)."
-
-        case .notAvailable:
-            message = "Tracking unavailable."
-
-        case .limited(.excessiveMotion):
-            message = "Tracking limited - Move the device more slowly."
-
-        case .limited(.insufficientFeatures):
-            message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
-
-        case .limited(.relocalizing):
-            message = "Resuming session — move to where you were when the session was interrupted."
-
-        case .limited(.initializing):
-            message = "Initializing AR session."
-
-        default:
-            // No feedback needed when tracking is normal and planes are visible.
-            // (Nor when in unreachable limited-tracking states.)
-            message = ""
-        }
-
-        sessionInfoLabel.text = message
+        sessionInfoLabel.attributedText = trackingState.description.styled(with: .red)
+            .appended("\n".styled())
+            .appended(peerMessage.styled(with: .green))
     }
 }
 
@@ -116,13 +91,21 @@ extension TestQRViewController: ARSessionDelegate {
     func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
         for anchor in anchors {
             if anchor.name == "QRCardAnchor" {
+                let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
                 let qrCard = QRCardEntity()
                 qrCard.cardTapped = {
                     print("Tapped")
                 }
-                qrCard.color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
-                horizontalAnchor.addChild(qrCard)
+                qrCard.color = color
                 qrCard.startMotion()
+
+//                // Create a cube at the location of the anchor.
+//                let boxLength: Float = 0.05
+//                // Color the cube based on the user that placed it.
+//                let qrCard = ModelEntity(mesh: MeshResource.generateBox(size: boxLength),
+//                                              materials: [SimpleMaterial(color: color, isMetallic: true)])
+//                // Offset the cube by half its length to align its bottom with the real-world surface.
+//                qrCard.position = [0, boxLength / 2, 0]
 
                 // Attach the cube to the ARAnchor via an AnchorEntity.
                 //   World origin -> ARAnchor -> AnchorEntity -> ModelEntity
@@ -150,6 +133,9 @@ extension TestQRViewController: ARSessionDelegate {
         if let collaborationData = try? NSKeyedUnarchiver.unarchivedObject(ofClass: ARSession.CollaborationData.self, from: data) {
             return arView.session.update(with: collaborationData)
         }
+        else {
+            print("Data is broken")
+        }
     }
 }
 
@@ -167,5 +153,55 @@ private extension ARFrame.WorldMappingStatus {
         @unknown default:
             return "Unknown"
         }
+    }
+}
+
+private extension ARCamera.TrackingState {
+    var description: String {
+        let message: String
+        switch self {
+        case .normal:
+            message = "Move around to map the environment"
+
+        case .notAvailable:
+            message = "Tracking unavailable."
+
+        case .limited(.excessiveMotion):
+            message = "Tracking limited - Move the device more slowly."
+
+        case .limited(.insufficientFeatures):
+            message = "Tracking limited - Point the device at an area with visible surface detail, or improve lighting conditions."
+
+        case .limited(.relocalizing):
+            message = "Resuming session — move to where you were when the session was interrupted."
+
+        case .limited(.initializing):
+            message = "Initializing AR session."
+
+        default:
+            // No feedback needed when tracking is normal and planes are visible.
+            // (Nor when in unreachable limited-tracking states.)
+            message = ""
+        }
+        return message
+    }
+}
+
+extension String {
+    func styled(with backgroundColor: UIColor = .clear, foregroundColor: UIColor = .black) -> NSMutableAttributedString {
+        NSMutableAttributedString(
+            string: self,
+            attributes: [
+                .backgroundColor: backgroundColor,
+                .foregroundColor: foregroundColor
+            ]
+        )
+    }
+}
+
+extension NSMutableAttributedString {
+    func appended(_ other: NSAttributedString) -> NSMutableAttributedString {
+        append(other)
+        return self
     }
 }
