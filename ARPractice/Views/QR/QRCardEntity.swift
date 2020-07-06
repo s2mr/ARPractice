@@ -4,7 +4,8 @@ import Combine
 import RealityUI
 
 final class QRCardEntity: Entity, HasModel {
-    /// これがModelEntityではなくEntityになっている可能性が高い
+    /// これはModelEntityではなくEntity: HasAnchoring...であるため、addChildすると常にposition0の初期位置になる。
+    /// twitterCard.cardObjectはModelEntityなのでそちらを使用する。
     let twitterCard = try! QRScene.loadTwitterCard()
 
     let cardContainer: HasModel
@@ -16,7 +17,8 @@ final class QRCardEntity: Entity, HasModel {
         }
     }
 
-    var cardTapped: (() -> Void)?
+/// twitterCardをaddChildしないので、sceneが存在せず、actions, notificationsを使用することはできない
+//    var cardTapped: (() -> Void)?
 
     var position: SIMD3<Float> = .zero {
         didSet {
@@ -29,16 +31,29 @@ final class QRCardEntity: Entity, HasModel {
 
         super.init()
 
-        twitterCard.actions.cardTapped.onAction = { [weak self] _ in
-            self?.cardTapped?()
-        }
+//        twitterCard.actions.cardTapped.onAction = { [weak self] _ in
+//            self?.cardTapped?()
+//        }
 
         addChild(twitterCard.cardObject!)
         twitterCard.cardObject?.addChild(twitterCard)
     }
 
-    func startMotion() {
+//    func startMotion() {
 //        twitterCard.notifications.startMotion.post()
+//    }
+
+    func startBounce() {
+        move(
+            to: Transform(scale: .init(repeating: 1.2), rotation: .init(), translation: .zero),
+            relativeTo: parent,
+            duration: 0.2,
+            timingFunction: .easeIn
+        )
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.move(to: .identity, relativeTo: self.parent, duration: 0.2, timingFunction: .easeOut)
+        }
     }
 }
 

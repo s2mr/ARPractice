@@ -57,9 +57,10 @@ final class TestQRViewController: UIViewController {
     @objc func handleTap(recognizer: UITapGestureRecognizer) {
         let location = recognizer.location(in: arView)
 
-        // Attempt to find a 3D location on a horizontal surface underneath the user's touch location.
-        let results = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .horizontal)
-        if let firstResult = results.first {
+        if let existsEntity = arView.hitTest(location, query: .any, mask: .all).first?.entity {
+            (existsEntity.parent as? QRCardEntity)?.startBounce()
+        } else if let firstResult = arView.raycast(from: location, allowing: .estimatedPlane, alignment: .horizontal).first {
+            // Attempt to find a 3D location on a horizontal surface underneath the user's touch location.
             // Add an ARAnchor at the touch location with a special name you check later in `session(_:didAdd:)`.
             let anchor = ARAnchor(name: "QRCardAnchor", transform: firstResult.worldTransform)
             let color = UIColor(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
@@ -107,11 +108,7 @@ extension TestQRViewController: ARSessionDelegate {
         for anchor in anchors {
             if anchor.name == "QRCardAnchor" {
                 let qrCard = QRCardEntity()
-                qrCard.cardTapped = {
-                    print("Tapped")
-                }
                 qrCard.color = (anchorColorPayload.colors[anchor.identifier]?.colorHex).map(UIColor.init)
-                qrCard.startMotion()
                 let anchorEntity = AnchorEntity(anchor: anchor)
                 anchorEntity.addChild(qrCard)
                 arView.scene.addAnchor(anchorEntity)
